@@ -1,0 +1,44 @@
+# Fly.io config. One always-warm machine in Mumbai; no cold starts.
+#   fly apps create shashankjindal
+#   fly secrets set ANTHROPIC_API_KEY=sk-ant-...
+#   fly deploy --remote-only
+# NEXT_PUBLIC_SITE_URL is baked in at BUILD time (metadata, canonical URLs); a domain change needs a redeploy.
+app = "shashankjindal"
+primary_region = "bom"
+
+[build]
+  [build.args]
+    NEXT_PUBLIC_SITE_URL = "https://shashankjindal.fly.dev"
+
+[env]
+  ANTHROPIC_MODEL = "claude-sonnet-5"
+  # 0 = errors only (default in production), 1 = request kinds + token usage, 2 = also question text.
+  ASK_LOG = "1"
+
+[deploy]
+  strategy = "bluegreen"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 40
+    hard_limit = 60
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    timeout = "5s"
+    method = "GET"
+    path = "/robots.txt"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
+  swap_size_mb = 256

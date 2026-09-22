@@ -1,0 +1,378 @@
+{
+  "/::is any of it live": {
+    "text": "Yes. The HR Policy Assistant is live at cubastion-hr-bot.onrender.com, running on a consulting firm's real policy documents. Dhobi Dash is live and in paid use — seven shops on monthly retainers since August 2025. The Siebel TDD Generator is also live at tdd-generator.fly.dev.",
+    "sources": [
+      "work.hrbot",
+      "work.dhobidash",
+      "work.tddgen"
+    ]
+  },
+  "/::what are you looking for": {
+    "text": "I'm open to consulting work and full-time AI roles. The fastest way to reach me is email at shashankjindal1306@gmail.com.",
+    "sources": [
+      "hero"
+    ]
+  },
+  "/::what do you actually build": {
+    "text": "I build three kinds of things: grounded AI assistants that answer only from your own documents and cite the source, voice and chat agents built as deterministic state machines with a narrow LLM classification layer on top, and AI wired into enterprise systems like Siebel that can read and write real records without breaking existing workflows. A lot of the work upfront is scoping whether something is worth building at all — I've written PRDs that shipped and killed features at discovery when they weren't worth the build.",
+    "sources": [
+      "offer.assistants",
+      "offer.agents",
+      "offer.enterprise"
+    ]
+  },
+  "/about::how did you get from graduate engineer to this": {
+    "text": "I joined Cubastion Consulting in October 2023 as a graduate engineer writing Node and SQL, and within a year I was deep into Oracle Siebel — workflows, integration objects, eScript, Open UI, EAI — across four demanding accounts, earning two promotions in three years to senior associate consultant. Alongside the engineering, I picked up the product side too: discovery, requirements, PRDs, UAT and release coordination, with 35+ initiatives scoped and 20+ PRDs shipped. I also kept building my own things on the side, like Dhobi Dash. None of those three tracks alone is remarkable, but together they're the shape an AI project actually needs.",
+    "sources": [
+      "background"
+    ]
+  },
+  "/about::what are you strongest at": {
+    "text": "My strongest combination is knowing Oracle Siebel from the inside — workflows, EAI, integration objects, extension schemas — and pairing that with grounded AI design: deterministic state machines, LLM classification layers, refusal design, and on-premise constraints. Together, that's the ability to work out what's actually worth automating in an enterprise system and then build it, rather than just prototyping something that stalls at the real data layer. That combination came out of three years across Mitsubishi Fuso, Airtel, Hero and Voltas, plus the product-side work of scoping and shipping PRDs.",
+    "sources": [
+      "background",
+      "stack.ai",
+      "stack.crm"
+    ]
+  },
+  "/about::why ai coming from crm": {
+    "text": "Three years in Siebel taught me what actually breaks enterprise systems: bad data reaching the business layer, workflows that can't handle exceptions, integrations nobody monitors until they fail. That's the same discipline AI work needs — knowing what the system underneath will allow before you build on top of it. I also picked up the product side along the way, scoping 35+ initiatives and shipping 20+ PRDs, so I'm not just building AI features, I'm deciding first whether they're worth building at all.",
+    "sources": [
+      "background",
+      "offer.enterprise"
+    ]
+  },
+  "/how-i-build::have you ever broken one of these": {
+    "text": "These six principles came out of decisions I had to make on real flows, most of them on the AI Service Booking Agent, so they're arguable rather than dogma — but they haven't been ones I've broken in the work described here. They're the standard I hold new work to on day one, not a claim of a flawless record beyond what's on this site.",
+    "sources": [
+      "principles",
+      "work.bookingagent"
+    ]
+  },
+  "/how-i-build::where did these come from": {
+    "text": "These six principles came out of real decisions I had to make on actual builds — most of them while building the AI Service Booking Agent. Each one was forced by a concrete choice on a real flow, not written up in the abstract, and each is arguable — I'm happy to argue any of them.",
+    "sources": [
+      "principles"
+    ]
+  },
+  "/how-i-build::which is most contentious": {
+    "text": "Of the six, \"pick a metric that can prove you wrong\" is the one I'd call most contentious — it directly attacks vendor-published IVR abandonment benchmarks as marketing figures with no traceable primary source, and insists you measure your own call log instead. That's a stance against an industry's standard reference points, not just a build preference.",
+    "sources": [
+      "principle.vi"
+    ]
+  },
+  "/work/airtel::what does the validation layer prevent": {
+    "text": "The validation layer runs before an order can move forward in Siebel's real-time discount integration, catching bad discount data at order capture. Without it, an order carrying bad discount data wouldn't fail loudly — it would fail downstream in fulfilment and billing, after the customer had already been told yes.",
+    "sources": [
+      "work.airtel"
+    ]
+  },
+  "/work/airtel::what drove the 17%": {
+    "text": "The entries attribute the 17% client revenue uplift to the Airtel engagement as a whole rather than breaking out a single cause — that work included the real-time discount integration on order capture, the validation layer keeping bad orders out of billing, 20+ change requests, 10+ workflow automations, and 8+ Open UI customisations. I don't have a further breakdown of which piece drove the number specifically.",
+    "sources": [
+      "work.airtel"
+    ]
+  },
+  "/work/airtel::what else shipped there": {
+    "text": "Alongside the real-time discount integration and its validation layer, I delivered 20+ change requests across applets, views and business components, built 10+ workflows automating customer onboarding and request handling, and did 8+ Open UI customisations using PR/PM and JavaScript. That work contributed to a 17% client revenue uplift, ~15% page load improvement, and 60+ defects resolved at >95% SLA adherence.",
+    "sources": [
+      "work.airtel"
+    ]
+  },
+  "/work/booking-agent::how is this different from an ivr": {
+    "text": "An IVR can't handle \"Thursday if you've got something\" — it needs rigid menu options. My booking agent uses a deterministic state machine in code for the actual logic, with the LLM confined to one narrow job: turning a spoken sentence into a small JSON object, so it can understand natural, flexible speech without the model ever driving the flow or seeing customer data. It also treats barge-in and sub-second first audio as requirements from the start, which is what makes it feel like a conversation rather than a phone tree.",
+    "sources": [
+      "work.bookingagent"
+    ]
+  },
+  "/work/booking-agent::when will it be done": {
+    "text": "The booking agent's backend, schema, and capacity model are already built and verified — the business-rules layer is in progress. I haven't given a completion date on this site; if you need a firm timeline, email me at shashankjindal1306@gmail.com.",
+    "sources": [
+      "work.bookingagent"
+    ]
+  },
+  "/work/booking-agent::why shouldn't the model drive the flow": {
+    "text": "Because business rules that live in a prompt are business rules you can't test. In the booking agent, a deterministic state machine in code decides what happens next; the LLM's only job is turning a spoken sentence into a small JSON object, never deciding logic, seeing customer data, or writing prose. That constraint is also what makes an on-premise deployment possible, which is often the reason an enterprise buyer says yes.",
+    "sources": [
+      "work.bookingagent",
+      "principle.i"
+    ]
+  },
+  "/work/dhobi-dash::how did you find the first customer": {
+    "text": "A shop owner two streets away handed me six paper registers and asked me to find an order from the previous month — that's what showed me how these businesses actually run. I built the product around that constraint and sold it to him the same week I finished it. Six more shops followed within three months, and all seven are still active on monthly retainers.",
+    "sources": [
+      "work.dhobidash"
+    ]
+  },
+  "/work/dhobi-dash::what keeps the data clean": {
+    "text": "In Dhobi Dash, the business rules are enforced rather than advised: an order can't be marked delivered while a balance is outstanding, delivered orders become read-only once completed, a payment can't exceed what's pending, and a duplicate phone number is rejected on entry. Those constraints are what keep seven shops' data from getting corrupted during a morning rush.",
+    "sources": [
+      "work.dhobidash"
+    ]
+  },
+  "/work/dhobi-dash::why an ai builder": {
+    "text": "For Dhobi Dash, the risk was never the code — it was whether a shop owner would actually change how he works. So I put my time into discovery and the spec, and used an AI builder to get from spec to a working product in a week, which let me sell it to the owner with six paper registers that same week.",
+    "sources": [
+      "work.dhobidash"
+    ]
+  },
+  "/work/hero::what did that trade off": {
+    "text": "Moving Hero's lead ingestion off the business layer and onto the extension schema meant giving up the validation and event logic that layer would normally apply. That trade-off is deliberate: it's correct at 100,000 records a day, but wrong at low volume, so validation has to happen before the data ever arrives rather than being caught in transit.",
+    "sources": [
+      "work.hero"
+    ]
+  },
+  "/work/hero::what was the outcome": {
+    "text": "On the Hero lead-migration work, the outcome has been zero reported issues since it went to production. It also collapsed roughly ten thousand daily EAI invocations into a single nightly job moving around 100,000 lead records.",
+    "sources": [
+      "work.hero"
+    ]
+  },
+  "/work/hero::why bypass the business layer": {
+    "text": "Because at 100,000 lead records a day, routing through Siebel's business layer via EAI meant roughly ten thousand separate runs to move one day's data — slow, fragile, and competing with everything else on the instance. Writing directly to the SIEBELEXT extension schema and moving it in a single nightly job at 22:00 collapsed that to one run. The trade-off is real: you give up the validation and event logic the business layer would have applied, so validation has to happen upstream before the data arrives. That's correct at this volume and wrong at low volume — it's a deliberate, scale-specific call, not a general pattern.",
+    "sources": [
+      "work.hero"
+    ]
+  },
+  "/work/hr-policy-assistant::could this work on our documents": {
+    "text": "The HR Policy Assistant is built as a retrieval system over a fixed document set — every answer cites the source document, and if a question falls outside the corpus, it declines rather than guessing. The same pattern applies to other document sets: policies, manuals, or records, wired with access controls appropriate to who should see them. If you want to talk through whether it fits your specific documents, email me at shashankjindal1306@gmail.com.",
+    "sources": [
+      "work.hrbot",
+      "offer.assistants",
+      "principle.iii"
+    ]
+  },
+  "/work/hr-policy-assistant::how does it stay grounded": {
+    "text": "The HR Policy Assistant answers only by retrieving from the company's actual policy documents and citing which document each answer came from, so the reader can verify it. If a question isn't covered by that corpus, it declines to answer rather than guessing — that refusal behavior was designed in from the start, not bolted on afterward.",
+    "sources": [
+      "work.hrbot"
+    ]
+  },
+  "/work/hr-policy-assistant::what happens when it doesn't know": {
+    "text": "When a question isn't covered by the HR policy documents, the assistant declines and says nothing further — it doesn't guess or invent an answer. That refusal behavior was designed in from the start, not bolted on after the fact; the interesting part of a grounded system is what it refuses, not just what it answers.",
+    "sources": [
+      "work.hrbot"
+    ]
+  },
+  "/work/mitsubishi-fuso::how big was the estate": {
+    "text": "The Mitsubishi Fuso estate covered sales and service on Siebel across 200+ dealerships and 2,500+ service centres, in a high-availability environment where a bad release was felt immediately across the network.",
+    "sources": [
+      "work.fuso"
+    ]
+  },
+  "/work/mitsubishi-fuso::what about incidents": {
+    "text": "On Mitsubishi Fuso I ran 130+ production incidents to root cause rather than just patching symptoms, which brought recurring issues down by about 30%. That was across a high-availability environment covering 200+ dealerships and 2,500+ service centres, so a bad release or an unresolved recurring issue was felt immediately across the network.",
+    "sources": [
+      "work.fuso"
+    ]
+  },
+  "/work/mitsubishi-fuso::what was the docusign work": {
+    "text": "I built the DocuSign integration for Mitsubishi Fuso using outbound web services, integration objects and workflows, so contracts and service documents could be signed digitally instead of printed and couriered. The buy-versus-build call went to buy, optimised for speed to revenue, and it shipped in four weeks. It took contract turnaround from 5 days to 6 hours, with 95% user adoption within three months and a 10% reduction in cost per document.",
+    "sources": [
+      "work.fuso"
+    ]
+  },
+  "/work/tdd-generator::how does the output stay consistent": {
+    "text": "The TDD Generator is schema-driven — it takes a CR ID, description, and object list and maps them into a fixed structure, so the output format is the same every time regardless of who's running it. That's what makes it consistent across people and ready for downstream automation, rather than producing a wall of free-form prose.",
+    "sources": [
+      "work.tddgen"
+    ]
+  },
+  "/work/tdd-generator::is it live": {
+    "text": "Yes — the Siebel TDD Generator is live at tdd-generator.fly.dev. It does what it's built to do; I haven't claimed any usage or adoption numbers for it.",
+    "sources": [
+      "work.tddgen"
+    ]
+  },
+  "/work/tdd-generator::what problem does it solve": {
+    "text": "The Siebel TDD Generator solves the problem of Technical Design Documents costing hours of repetitive formatting per change request — the actual thinking takes twenty minutes, but writing it up takes an afternoon. It takes a CR ID, a description and a free-text object list, and generates a structured, schema-driven TDD in seconds, so the output is consistent and ready for downstream automation instead of a wall of prose.",
+    "sources": [
+      "work.tddgen"
+    ]
+  },
+  "/work/voltas::how big is the payout saving": {
+    "text": "The FPO automation at Voltas takes the franchisee payout cycle from roughly 5 hours of manual work down to a morning verification, done twice monthly across about 1,300 franchisees. The automation itself is still in development, due live within three months.",
+    "sources": [
+      "work.voltas"
+    ]
+  },
+  "/work/voltas::what does the monitoring cover": {
+    "text": "The Voltas monitoring tool (voltasmon) gives a single view across eight component groups: application interface tier, app servers, cluster and nodes, gateway server, Siebel servers, database, OBIEE, and miscellaneous services. Per node it reports CPU, memory and disk, component status, JVM heap, and inbound SOAP and REST call counts shown as successful against total, plus environment switching, per-node refresh timestamps, and an admin config surface. It's an internal tool with no public link.",
+    "sources": [
+      "work.voltas"
+    ]
+  },
+  "/work/voltas::what's the stack": {
+    "text": "The Voltas engagement runs on Oracle Siebel deployed on Kubernetes, with shell scripting behind the monitoring tool, a SAP batch interface for franchisee payouts, and OBIEE as one of the monitored component groups.",
+    "sources": [
+      "work.voltas"
+    ]
+  },
+  "are you open to consulting work": {
+    "text": "Yes — I'm open to both consulting work and full-time AI roles. The fastest way to reach me is email at shashankjindal1306@gmail.com, or you can find my phone and LinkedIn on the contact page.",
+    "sources": [
+      "hero",
+      "contact"
+    ]
+  },
+  "can i see your code": {
+    "text": "I don't have a public code repository listed here. What I can offer is live projects you can try directly: the HR Policy Assistant at cubastion-hr-bot.onrender.com, Dhobi Dash at dhobi-dash-manager.lovable.app (demo login available), and the Siebel TDD Generator at tdd-generator.fly.dev. If you want to talk specifics about implementation, email me at shashankjindal1306@gmail.com.",
+    "sources": [
+      "work.hrbot",
+      "work.dhobidash",
+      "work.tddgen"
+    ]
+  },
+  "do you build voice agents": {
+    "text": "Yes. I design them as a deterministic state machine in code, with the LLM confined to a narrow classification job — turning a spoken sentence into a small JSON object, never deciding what happens next and never touching customer data directly. Barge-in and sub-second first audio are treated as requirements from day one, not polish added later. My current example is an AI Service Booking Agent for vehicle service centres, built on this approach end to end — telephony, conversation design, and the state machine underneath.",
+    "sources": [
+      "offer.agents",
+      "work.bookingagent",
+      "principle.i",
+      "principle.ii"
+    ]
+  },
+  "do you have a resume": {
+    "text": "Yes — my resume is at /Shashank_Jindal_Resume.pdf.",
+    "sources": [
+      "hero"
+    ]
+  },
+  "do you have any certifications": {
+    "text": "Yes — I hold an \"AI for Product Management\" certification from Pendo, alongside my B.Tech in Electronics & Communication from Maharaja Agrasen Institute of Technology (2023, 8.8 CGPA).",
+    "sources": [
+      "background"
+    ]
+  },
+  "do you know siebel": {
+    "text": "Yes — three years working inside Oracle Siebel CRM across four accounts: Mitsubishi Fuso, Airtel, Hero, and Voltas. That's covered workflows and subprocesses, EAI and integration objects, eScript, Open UI (PR/PM), order management and pricing, extension schemas, and EIM, on estates spanning 200+ dealerships, 2,500+ service centres and 1,300+ franchisees. I've shipped things like a real-time discount integration at Airtel, a 100,000-record-a-day extension-schema pipeline at Hero, and production monitoring plus payout automation at Voltas.",
+    "sources": [
+      "hero",
+      "work.fuso",
+      "work.airtel",
+      "work.hero",
+      "work.voltas",
+      "stack.crm"
+    ]
+  },
+  "do you use vector databases or embeddings": {
+    "text": "For this site's assistant, no — there's no vector database or embeddings. The corpus is about thirty entries, small enough to send whole to the model, and common questions are answered from a pre-generated file with no model call at all.",
+    "sources": [
+      "assistant"
+    ]
+  },
+  "do you work remotely": {
+    "text": "I don't have that on this site — it doesn't cover remote versus on-site arrangements. Reach out at shashankjindal1306@gmail.com and I can answer directly.",
+    "sources": []
+  },
+  "have you won any awards": {
+    "text": "Yes — I received the Diamond Award in 2024 during my time at Cubastion Consulting.",
+    "sources": [
+      "background"
+    ]
+  },
+  "how do i contact you": {
+    "text": "The fastest way is email: shashankjindal1306@gmail.com. You can also reach me by phone at +91 96543 46434, or through LinkedIn (/in/shashankcodes). My resume is at /Shashank_Jindal_Resume.pdf.",
+    "sources": [
+      "contact"
+    ]
+  },
+  "how many years of experience do you have": {
+    "text": "I joined Cubastion Consulting in October 2023 as a graduate engineer, so I've been working there since then — through two promotions to senior associate consultant — across Mitsubishi Fuso, Airtel, Hero, and Voltas, alongside my own projects like Dhobi Dash.",
+    "sources": [
+      "background"
+    ]
+  },
+  "is any of it live": {
+    "text": "Yes. The HR Policy Assistant, Dhobi Dash, and the Siebel TDD Generator are all live and reachable right now — Dhobi Dash has seven shops on paying retainers, and the HR bot runs on real policy documents behind Microsoft Entra SSO. On the enterprise side, the Voltas monitoring tool and payout automation, the Hero lead pipeline, the Airtel discount integration, and the Mitsubishi Fuso work are all in production at those clients, though those are internal tools with no public link.",
+    "sources": [
+      "work.hrbot",
+      "work.dhobidash",
+      "work.tddgen",
+      "work.voltas",
+      "work.hero",
+      "work.airtel",
+      "work.fuso"
+    ]
+  },
+  "what are you": {
+    "text": "I'm an assistant Shashank built to answer on his behalf, drawing only from a fixed set of entries he wrote about his work. I'm software, not Shashank typing live — I name the entries I use so you can check them yourself.",
+    "sources": [
+      "assistant"
+    ]
+  },
+  "what are you strongest at": {
+    "text": "I'm strongest where AI meets enterprise systems that already run a business — grounded assistants that cite sources and refuse rather than guess, voice/chat agents built as deterministic state machines with the LLM kept to a narrow job, and wiring that into real records (Oracle Siebel, integrations, batch jobs) without breaking the workflows already in place. I've scoped 35+ initiatives and written 20+ PRDs that shipped, and I've also killed features at discovery when they weren't worth building — deciding what's worth building is as much a strength as building it.",
+    "sources": [
+      "hero",
+      "offer.enterprise",
+      "principles"
+    ]
+  },
+  "what do you actually build": {
+    "text": "I build three kinds of things. Grounded AI assistants that answer only from your own documents, citing sources and refusing to guess when the answer isn't there. Voice and chat agents built end to end — conversation design, a deterministic state machine in code, a narrow LLM classification layer, telephony and SMS. And AI wired into enterprise systems like Siebel and Oracle, getting an agent to read and write real records without breaking the workflows already running the business.",
+    "sources": [
+      "offer.assistants",
+      "offer.agents",
+      "offer.enterprise"
+    ]
+  },
+  "what is dhobi dash": {
+    "text": "Dhobi Dash is a dry-cleaning shop management product I built after a shop owner near me handed me six paper registers and asked me to find an order from the previous month. It's a mobile-first app for customer lookup by phone, fast order creation with auto-filled pricing, status tracking through the real order lifecycle, and partial payment tracking — with business rules enforced (not advisory) so data can't get corrupted, like blocking delivery while a balance is outstanding. Seven shops have been paying monthly retainers since August 2025, all still active. You can try it live at dhobi-dash-manager.lovable.app with the demo account listed on that page.",
+    "sources": [
+      "work.dhobidash"
+    ]
+  },
+  "what is your biggest project": {
+    "text": "Hard to pick one \"biggest\" since they differ in kind, but by scale my enterprise work stands out: Mitsubishi Fuso covered 200+ dealerships and 2,500+ service centres, Voltas involved payout automation across ~1,300 franchisees and production monitoring across an eight-component Siebel estate, Airtel's real-time discount integration contributed to a 17% client revenue uplift, and Hero's pipeline moves 100,000 lead records a day. If you mean personal projects, Dhobi Dash is the one with real traction — seven paying shops thirteen months in.",
+    "sources": [
+      "work.voltas",
+      "work.fuso",
+      "work.airtel",
+      "work.hero"
+    ]
+  },
+  "what is your current role and company": {
+    "text": "I'm currently a Senior Associate Consultant at Cubastion Consulting, a role I've held since joining in October 2023 as a graduate engineer. I've worked across four accounts there — Mitsubishi Fuso, Airtel, Hero and Voltas — and picked up two promotions along the way: graduate trainee, associate consultant, senior associate consultant.",
+    "sources": [
+      "background"
+    ]
+  },
+  "what is your education": {
+    "text": "I hold a B.Tech in Electronics & Communication from Maharaja Agrasen Institute of Technology, class of 2023, with an 8.8 CGPA. I also have a certification in AI for Product Management from Pendo.",
+    "sources": [
+      "background"
+    ]
+  },
+  "what is your tech stack": {
+    "text": "My stack spans a few areas. For AI and agents: grounded retrieval with source citation, deterministic state machines, LLM classification layers, slot extraction, refusal design, on-premise constraints, and OpenRouter. For enterprise CRM: Oracle Siebel, workflows, EAI/integration objects, eScript, Open UI, order management and pricing, extension schemas, and EIM. On the backend: Node.js, Express, REST/SOAP, WebSockets, WebRTC, and Docker; on data: Oracle SQL/PL-SQL, MySQL, MongoDB, SQLite, Elasticsearch, and Redis; on frontend: React, Next.js, Redux, TypeScript, Tailwind. I also work the product side — discovery, PRDs, roadmapping, UAT and launch.",
+    "sources": [
+      "stack.ai",
+      "stack.crm",
+      "stack.backend",
+      "stack.data",
+      "stack.frontend",
+      "stack.product"
+    ]
+  },
+  "what languages do you speak": {
+    "text": "I speak English and Hindi.",
+    "sources": [
+      "background"
+    ]
+  },
+  "where are you based": {
+    "text": "I'm based in New Delhi, India.",
+    "sources": [
+      "hero"
+    ]
+  },
+  "why ai coming from crm": {
+    "text": "Three years inside Oracle Siebel across Mitsubishi Fuso, Airtel, Hero and Voltas taught me what actually runs a business — the data, the workflows, the integrations underneath the CRM screens. AI work fails most often at the point where a pilot has to touch real enterprise systems, which is exactly the layer I already know cold. So the move isn't away from CRM, it's building AI that's grounded in and wired into systems like the ones I spent three years inside.",
+    "sources": [
+      "hero",
+      "background",
+      "offer.enterprise"
+    ]
+  }
+}
