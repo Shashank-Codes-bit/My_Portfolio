@@ -1,10 +1,10 @@
-# Fly.io config. One always-warm machine in Mumbai; no cold starts.
+# Fly.io config. One always-warm machine in Singapore (Fly retired bom); no cold starts.
 #   fly apps create shashankjindal
 #   fly secrets set ANTHROPIC_API_KEY=sk-ant-...
 #   fly deploy --remote-only
 # NEXT_PUBLIC_SITE_URL is baked in at BUILD time (metadata, canonical URLs); a domain change needs a redeploy.
 app = "shashankjindal"
-primary_region = "bom"
+primary_region = "sin"
 
 [build]
   [build.args]
