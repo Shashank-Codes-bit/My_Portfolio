@@ -11,7 +11,9 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check": "npm run typecheck && npm run lint && npm run test && npm run build"
+    "check": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "deploy:staging": "fly deploy -c fly.staging.toml --remote-only --ha=false",
+    "deploy:prod": "fly deploy -c fly.toml --remote-only --ha=false"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",

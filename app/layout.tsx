@@ -4,7 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import RailProvider from "@/components/rail/RailProvider";
 import Assistant from "@/components/rail/Assistant";
-import { SITE, siteUrl } from "@/lib/site";
+import { SITE, isProduction, siteUrl } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme-script";
 
 const display = Fraunces({
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: { type: "website", siteName: SITE.name, title: `${SITE.name} — ${SITE.h1}`, description, url: "/", locale: "en_IN" },
   twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true },
+  robots: isProduction ? { index: true, follow: true } : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

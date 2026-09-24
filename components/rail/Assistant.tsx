@@ -17,6 +17,7 @@ export default function Assistant() {
   const dockInput = useRef<HTMLInputElement>(null);
   const panelInput = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLElement>(null);
+  const restoring = useRef(false); // true only while focus is being handed back to the dock on close
   const [draft, setDraft] = useState(""); // one draft shared by the dock and the panel composer
 
   // Only real, finished answers count; the sample intro turns never do.
@@ -32,7 +33,12 @@ export default function Assistant() {
       panelInput.current?.focus({ preventScroll: true });
       return () => {
         page.forEach((el) => el.removeAttribute("inert"));
+        // Restoring focus must not count as the visitor focusing the dock (which opens the panel again).
+        restoring.current = true;
         returnTo?.focus({ preventScroll: true });
+        queueMicrotask(() => {
+          restoring.current = false;
+        });
       };
     }
   }, [panelOpen]);
@@ -55,6 +61,10 @@ export default function Assistant() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [panelOpen, closePanel, heroActive, pathname]);
+
+  const openFromDock = () => {
+    if (!restoring.current) openPanel();
+  };
 
   const sendFromDock = (q: string) => {
     ask(q);
@@ -82,7 +92,7 @@ export default function Assistant() {
         <Composer
           ref={dockInput}
           onSubmit={sendFromDock}
-          onFocus={openPanel}
+          onFocus={openFromDock}
           disabled={status === "streaming"}
           showKbd
           value={draft}

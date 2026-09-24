@@ -21,3 +21,7 @@ export const SITE = {
 } as const;
 
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+/** Only the production origin is indexable; staging and local builds mark themselves noindex. */
+export const PRODUCTION_URL = "https://shashankjindal.fly.dev";
+export const isProduction = siteUrl === PRODUCTION_URL;

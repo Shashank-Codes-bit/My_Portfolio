@@ -1,19 +1,19 @@
-# Fly.io config. One always-warm machine in Singapore (Fly retired bom); no cold starts.
-#   fly apps create shashankjindal
-#   fly secrets set ANTHROPIC_API_KEY=sk-ant-...
-#   npm run deploy:prod      (= fly deploy -c fly.toml --remote-only --ha=false), from the `main` branch only
+# Fly.io STAGING config: a separate app and URL, same shape as production. Deploy from the `staging` branch:
+#   npm run deploy:staging      (= fly deploy -c fly.staging.toml --remote-only --ha=false)
+# The site marks itself noindex whenever NEXT_PUBLIC_SITE_URL is not the production URL (see lib/site.ts).
+# Pause it between rounds of work: fly scale count 0 -a shashankjindal-staging
 # NEXT_PUBLIC_SITE_URL is baked in at BUILD time (metadata, canonical URLs); a domain change needs a redeploy.
-app = "shashankjindal"
+app = "shashankjindal-staging"
 primary_region = "sin"
 
 [build]
   [build.args]
-    NEXT_PUBLIC_SITE_URL = "https://shashankjindal.fly.dev"
+    NEXT_PUBLIC_SITE_URL = "https://shashankjindal-staging.fly.dev"
 
 [env]
   ANTHROPIC_MODEL = "claude-sonnet-5"
   # 0 = errors only (default in production), 1 = request kinds + token usage, 2 = also question text.
-  ASK_LOG = "1"
+  ASK_LOG = "2"
 
 [deploy]
   strategy = "bluegreen"

@@ -52,12 +52,21 @@ Pipeline: same-origin check → body size → validate → per-IP rate limit →
 npm run check   # typecheck + lint + tests + build
 ```
 
-## Deploy (Fly.io)
+## Branches and deploys
+
+`main` is production (https://shashankjindal.fly.dev, Fly app `shashankjindal`, `fly.toml`). `staging` is where changes land first (https://shashankjindal-staging.fly.dev, Fly app `shashankjindal-staging`, `fly.staging.toml`). Staging serves `Disallow: /` and `noindex`, decided at build time from `NEXT_PUBLIC_SITE_URL`.
+
+1. Work on `staging`, run `npm run check`.
+2. `npm run deploy:staging`, verify on the staging URL.
+3. Merge `staging` into `main` (fast-forward), then `npm run deploy:prod`.
+
+Both deploy scripts pass `--ha=false` so each app keeps exactly one machine. Pause staging between rounds of work with `fly scale count 0 -a shashankjindal-staging`; deploying again brings it back.
+
+First-time setup for either app:
 
 ```bash
-fly apps create shashankjindal
-fly secrets set ANTHROPIC_API_KEY=sk-ant-...
-fly deploy --remote-only
+fly apps create <app>
+grep '^ANTHROPIC_API_KEY=' .env.local | fly secrets import -a <app> --stage   # value never echoed
 ```
 
-`fly.toml` keeps one machine always running with a health check on `/robots.txt` and blue-green deploys, so there is no cold start and no downtime on deploy.
+Each config keeps one machine always running with a health check on `/robots.txt` and blue-green deploys, so there is no cold start and no downtime on deploy.
