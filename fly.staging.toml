@@ -1,7 +1,9 @@
 # Fly.io STAGING config: a separate app and URL, same shape as production. Deploy from the `staging` branch:
 #   npm run deploy:staging      (= fly deploy -c fly.staging.toml --remote-only --ha=false)
 # The site marks itself noindex whenever NEXT_PUBLIC_SITE_URL is not the production URL (see lib/site.ts).
-# Pause it between rounds of work: fly scale count 0 -a shashankjindal-staging
+# Pause it between rounds of work: fly machine stop <id> -a shashankjindal-staging  (id from `fly status`; the next request
+# to the URL starts it again in a few seconds because auto_start_machines is on). Do NOT use `fly scale count 0`:
+# that deletes the machine and needs a redeploy.
 # NEXT_PUBLIC_SITE_URL is baked in at BUILD time (metadata, canonical URLs); a domain change needs a redeploy.
 app = "shashankjindal-staging"
 primary_region = "sin"
