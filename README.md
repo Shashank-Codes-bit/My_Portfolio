@@ -60,7 +60,7 @@ npm run check   # typecheck + lint + tests + build
 2. `npm run deploy:staging`, verify on the staging URL.
 3. Merge `staging` into `main` (fast-forward), then `npm run deploy:prod`.
 
-Both deploy scripts pass `--ha=false` so each app keeps exactly one machine. Pause staging between rounds of work with `fly machine stop <id> -a shashankjindal-staging` (id from `fly status -a shashankjindal-staging`): a stopped machine costs only a few cents of storage, and the next request to the staging URL starts it again in a few seconds (`auto_start_machines`). Do not use `fly scale count 0`; that deletes the machine and needs a redeploy.
+Both deploy scripts pass `--ha=false` so each app keeps exactly one machine. Staging sleeps by itself: `auto_stop_machines = "suspend"` with `min_machines_running = 0`, so it suspends when idle and resumes on the first request (measured 1.4-3.3 s typical, one outlier at 27 s). Production stays always-on for an instant first impression. Never use `fly scale count 0`; that deletes the machine and needs a redeploy.
 
 First-time setup for either app:
 
