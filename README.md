@@ -60,7 +60,7 @@ npm run check   # typecheck + lint + tests + build
 2. `npm run deploy:staging`, verify on the staging URL.
 3. Merge `staging` into `main` (fast-forward), then `npm run deploy:prod`.
 
-Both deploy scripts pass `--ha=false` so each app keeps exactly one machine. Staging sleeps by itself: `auto_stop_machines = "suspend"` with `min_machines_running = 0`, so it suspends when idle and resumes on the first request (measured 1.4-3.3 s typical, one outlier at 27 s). Production stays always-on for an instant first impression. Never use `fly scale count 0`; that deletes the machine and needs a redeploy.
+Both deploy scripts pass `--ha=false` so each app keeps exactly one machine. Both apps sleep when idle (`auto_stop_machines = "suspend"`, `min_machines_running = 0`) and resume on the first request, so you pay only for the hours the site is used. Measured wake-up: first byte about 2 s, whole page about 3.5 s, then about 0.4 s while awake; a machine Fly has dropped from suspended to fully stopped takes 5-6 s. Never use `fly scale count 0`; that deletes the machine and needs a redeploy.
 
 First-time setup for either app:
 

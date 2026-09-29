@@ -21,9 +21,11 @@ primary_region = "sin"
 [http_service]
   internal_port = 3000
   force_https = true
-  auto_stop_machines = false
+  # Sleeps when idle and resumes on the first request (measured: first byte ~2s after a wake,
+  # ~0.4s once awake). You pay only for the hours the site is actually used.
+  auto_stop_machines = "suspend"
   auto_start_machines = true
-  min_machines_running = 1
+  min_machines_running = 0
   processes = ["app"]
 
   [http_service.concurrency]
